@@ -1,0 +1,48 @@
+/* ===== Reset básico ===== */
+html, body { height: 100%; }      /* aseguramos que html y body midan 100% */
+body {
+  margin: 0;                      /* quitamos margen por defecto del body */
+  font-family: system-ui, sans-serif;
+}
+
+/* ===== Layout base (mobile-first) ===== */
+.layout {
+  display: grid;                  /* activa CSS Grid */
+  grid-template-columns: 1fr;     /* 1 sola columna */
+  grid-template-rows: 9fr 1fr;    /* 2 filas → 90% arriba, 10% abajo */
+  min-height: 100vh;              /* que ocupe toda la altura de la pantalla */
+}
+
+/* ===== Estilos de las cajas ===== */
+.box {
+  display: grid;                  /* grid para centrar fácilmente el texto */
+  place-items: center;            /* centra el contenido en ambas direcciones */
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+.box1 { background: #1565c0; }    /* azul */
+.box2 { background: #26a69a; }    /* verde */
+
+/* ===== Desktop (≥800px) ===== */
+@media (min-width: 800px) {
+  .layout {
+    /* Ahora queremos una fila y dos columnas */
+    grid-template-columns: 1fr 2fr; /* izquierda ocupa 1 fracción, derecha 2 */
+    grid-template-rows: 1fr;        /* solo una fila */
+  }
+
+  /* Reordenamos:
+     - La caja 2 pasa a la columna 1 (izquierda).
+     - La caja 1 pasa a la columna 2 (derecha).
+  */
+  .box2 {
+    grid-column: 1; /* columna izquierda */
+    grid-row: 1;    /* única fila */
+  }
+  .box1 {
+    grid-column: 2; /* columna derecha */
+    grid-row: 1;    /* única fila */
+  }
+}
+  
